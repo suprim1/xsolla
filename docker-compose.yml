@@ -1,0 +1,34 @@
+version: '2'
+services:
+    nginx:
+        container_name: nginx
+        image: nginx:latest
+        ports:
+            - "80:80"
+        volumes:
+            - ./hosts:/etc/nginx/conf.d
+            - ./www:/var/www
+            - ./logs:/var/log/nginx
+        links:
+            - php
+    php:
+        container_name: php_7_1
+        build: ./images/php
+        links:
+            - mysql
+        volumes:
+            - ./www:/var/www
+    mysql:
+        container_name: mysql_percona
+        image: percona
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./mysql:/var/lib/mysql
+        environment:
+            SERVICE_NAME: mysql
+            MYSQL_PORT: 3306
+            MYSQL_DATABASE: 'site'
+            MYSQL_USER: 'user'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ROOT_PASSWORD: 'password'
