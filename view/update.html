@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+<h3>Изменить книгу</h3>
+<form method="POST">
+    <input type="hidden" name="id" value="{{.Id}}" />
+    <label>Name</label><br>
+    <input type="text" name="name" value="{{.Name}}" /><br><br>
+    <input type="submit" value="Изменить" />
+</form>
+</body>
+</html>

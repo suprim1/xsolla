@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+<h3>Книжная полка</h3>
+<table>
+    <thead><th>Id</th><th>Name</th></thead>
+    {{range . }}
+        <tr>
+            <td>{{.Id}}</td>
+            <td>{{.Name}}</td>
+            <td><a href="/update?id={{.Id}}">изменить</a></td>
+            <td><a href="/delete?id={{.Id}}">удалить</a></td>
+        </tr>
+    {{end}}
+</table>
+<a href="/create">
+    <button>Добавить книгу</button>
+</a>
+</body>
+</html>
